@@ -1,0 +1,30 @@
+{
+  "name": "week-18-homework",
+  "version": "1.0.0",
+  "description": "MongoDB & Data Scraping",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellymersereau/Week-18-HW-Mongo.git"
+  },
+  "author": "Kelly Mersereau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kellymersereau/Week-18-HW-Mongo/issues"
+  },
+  "homepage": "https://github.com/kellymersereau/Week-18-HW-Mongo#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cheerio": "^0.20.0",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5",
+    "mongoose": "^4.4.20",
+    "nodemon": "^1.9.2",
+    "request": "^2.72.0"
+  }
+}
