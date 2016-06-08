@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>News Notes</title>
+
+	<!-- Google Fonts - Roboto -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+	<!--Import Google Icon Font-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="/assets/materialize/css/materialize.min.css"  type="text/css">
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+</head>
+<body>
+<!--navbar -->
+	<div class="navbar-fixed">
+		<nav class="indigo lighten-2" role="navigation">
+			<a href="#" id="logo-container" class="brand-logo center condensed thin">News Notes</a>
+			<ul class="right hide-on-med-and-down">
+				<li>
+					<a href="/"><i class="material-icons">home</i></a>
+				</li>
+				<li>
+					<a href="/profile/{{users.id}}"><i class="material-icons">person</i></a>
+				</li>
+			</ul>
+			<!--for mobile only -->
+			<ul id="slide-out" class="side-nav">
+				<li>
+					<a href="/"><i class="material-icons">home</i> Home</a>
+				</li>
+				<li>
+					<a href="/profile/{{users.id}}"><i class="material-icons">person</i> Profile</a>
+				</li>
+			</ul>
+			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+		</nav>
+	</div>
+
+			{{body}}
+
+	<footer class="page-footer indigo lighten-1">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">News Notes</h5>
+					<p class="grey-text text-lighten-4 thin">News Notes is an online news gathering website which allows users to enter notes for each article and store notes for reference.  Users can select from multiple news sources to gain access to a robust collection of news articles.</p>
+				</div>
+				<div class="col l3 m6 s12">
+					<h5 class="white-text">News Sources</h5>
+					<ul>
+						<li><a class="white-text thin" href="https://news.vice.com">Vice News</a></li>
+						<li><a class="white-text thin" href="www.huffingtonpost.com">Huffington Post</a></li>
+						<li><a class="white-text thin" href="http://www.npr.org/sections/news/">NPR News</a></li>
+					</ul>
+				</div>
+				<div class="col l3 m6 s12">
+					<h5 class="white-text">Connect</h5>
+					<ul>
+						<li><a class="white-text thin" href="https://github.com/kellymersereau">GitHub</a></li>
+						<li><a class="white-text thin" href="www.twitter.com/kellsbellslovee">Twitter</a></li>
+						<li><a class="white-text thin" href="www.linkedin.com/kellymersereau">LinkedIn</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<footer class="page-footer indigo darken-1">
+			<div class="footer-copyright">
+				<div class="container center thin">
+				&copy; Kelly Mersereau 2016
+				</div>
+			</div>
+		</footer>
+	</footer>
+	
+	  <!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<!-- Materialize javascript -->
+	<script type="text/javascript" src="/assets/materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

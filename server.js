@@ -11,18 +11,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
-app.use(express.static(process.cwd() + '/public'));
-
-// Database configuration - MongoDB
-mongoose.connect('mongodb://localhost/articles_db');
-var db = mongoose.connection;
-
-db.on('error', function(err){
-	console.log('Mongoose Error: ', err);
-});
-db.once('open', function(){
-	console.log('Mongoose connection successful.');
-});
+app.use(express.static(process.cwd() + '/Public'));
 
 
 // override with POST having ?_method=DELETE
@@ -34,34 +23,11 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 //assigning controllers
+var app_controllers = require('./Controllers/controller.js');
 
-// var article_controllers = require('./controllers/article_controller.js');
 
-// app.use('/', article_controllers);
+app.use('/', app_controllers);
 
-app.get('/', function(req, res){
-	res.render('index');
-});
-
-app.get('/all', function(req, res){
-	db.scrapedArticle.find({}, function(err, found){
-		if(err){
-			console.log("error: ", err);
-		} else{
-			res.json(found);
-		}
-	});
-});
-
-app.get('/scrape', function(req, res){
-	request('https://news.vice.com/', function(error, response, html){
-		var $ = cheerio.load(html);
-		var result = [];
-		$('article').each(function(i, element){
-			var title = $(this).children('h2').text();
-		})
-	})
-})
 
 
 app.listen(3000, function(){
