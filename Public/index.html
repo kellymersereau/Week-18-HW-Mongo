@@ -26,24 +26,27 @@
 				<li>
 					<a href="/"><i class="material-icons">home</i></a>
 				</li>
-				<li>
-					<a href="/profile/{{users.id}}"><i class="material-icons">person</i></a>
-				</li>
 			</ul>
 			<!--for mobile only -->
 			<ul id="slide-out" class="side-nav">
 				<li>
 					<a href="/"><i class="material-icons">home</i> Home</a>
 				</li>
-				<li>
-					<a href="/profile/{{users.id}}"><i class="material-icons">person</i> Profile</a>
-				</li>
 			</ul>
 			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 		</nav>
 	</div>
 
-			{{{body}}}
+	<div id="wrapper">
+		<div class="container">
+			<h4 class="condensed thin">Click on the links below to get news articles from each source </h4>
+			<a href="/vice">Vice News</a>
+			<a href="/huffpost" id="huffButton">Huffington Post News</a>
+			<a href="/npr" id="nprButton">NPR News</a>
+		</div>
+		<div id="articles"></div>
+		<div id="notes"></div>
+	</div>
 
 	<footer class="page-footer indigo lighten-1">
 		<div class="container">
@@ -86,7 +89,7 @@
 	<script type="text/javascript" src="/assets/materialize/js/materialize.min.js"></script>
 
 	<!--app.js -->
-	<script src="../assets/app.js"></script>
+	<script src="/app.js"></script>
 
 </body>
 </html>
