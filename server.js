@@ -14,20 +14,6 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('Public'));
 
 
-// override with POST having ?_method=DELETE
-// app.use(methodOverride('_method'))
-// var exphbs = require('express-handlebars');
-// app.engine('handlebars', exphbs({
-//     defaultLayout: 'main',
-// }));
-// app.set('view engine', 'handlebars');
-
-//assigning controllers
-// var app_controllers = require('./Controllers/controller.js');
-
-
-// app.use('/', app_controllers);
-
 // Require models
 var Note = require('./Models/note.js');
 var User = require('./Models/user.js');
@@ -64,10 +50,10 @@ app.get('/vice', function(req, res){
 			});
 		});
 	});
-	res.send('complete');
+	res.send('<a href="/" class="btn thin black lighten-1">View articles </a>');
 });
 // vice news find articles
-app.get('/articles/vice', function(req, res){
+app.get('/articles', function(req, res){
 	Article.find({}, function(err, doc){
 		if(err){
 			console.log(err);
@@ -77,65 +63,38 @@ app.get('/articles/vice', function(req, res){
 	});
 });
 
-// Huffington Post news scrape
-// app.get('/huffpost', function(req, res){
-// 	request('https://www.huffingtonpost.com/', function(error, response, html){
-// 		var $ = cheerio.load(html);
-// 		var result = {};
-// 		$('article').each(function(i, element){
-// 			console.log(this);
+app.get('/articles/:id', function(req, res){
+	Article.findOne({'_id': req.params.id})
+	.populate('note')
+	.exec(function(err, doc){
+		if (err){
+			console.log(err);
+		} else {
+			res.json(doc);
+		}
+	});
+});
 
-// 			result.source = "Huffington Post";
-// 			result.title =
-// 			result.link =
-// 			result.body =
+app.post('/articles/:id', function(req, res){
+	var newNote = new Note(req.body);
 
-// 			console.log('RESULT TITLE ', result.title);
-// 			console.log('RESULT LINK ', result.link);
-// 			console.log('RESULT.BODY ', result.body);
+	newNote.save(function(err, doc){
+		if(err){
+			console.log(err);
+		} else {
+			Article.findOneAndUpdate({'_id': req.params.id}, {'note':doc._id})
+			.exec(function(err, doc){
+				if (err){
+					console.log(err);
+				} else {
+					res.send(doc);
+				}
+			});
 
-// 			var entry = new Article(result);
-// 			entry.save(function(err, doc){
-// 				if(err){
-// 					console.log(err);
-// 				} else{
-// 					console.log(doc);
-// 				}
-// 			});
-// 		});
-// 	});
-// 	res.send("scrape complete!");
-// });
+		}
+	});
+});
 
-// //NPR news scrape
-// app.get('/npr', function(req, res){
-// 	request('http://www.npr.org/sections/news/', function(error, response, html){
-// 		var $ = cheerio.load(html);
-// 		var result = {};
-// 		$('article').each(function(i, element){
-// 			console.log(this);
-
-// 			result.source = 'NPR News';
-// 			result.title =
-// 			result.link =
-// 			result.body =
-
-// 			console.log('RESULT TITLE ', result.title);
-// 			console.log('RESULT LINK ', result.link);
-// 			console.log('RESULT BODY ', result.body);
-
-// 			var entry = new Article(result);
-// 			entry.save(function(err, doc){
-// 				if(err){
-// 					console.log(err);
-// 				} else{
-// 					console.log(doc);
-// 				}
-// 			});
-// 		});
-// 	});
-// 	res.send('scrape complete!');
-// });
 
 
 app.listen(3000, function(){
