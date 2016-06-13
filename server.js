@@ -19,7 +19,7 @@ var Note = require('./Models/note.js');
 var User = require('./Models/user.js');
 var Article = require('./Models/article.js');
 
-var db = require('./config/connection.js');
+var db = require('./Config/connection.js');
 
 app.get('/', function(req, res){
 	res.send(index.html);
