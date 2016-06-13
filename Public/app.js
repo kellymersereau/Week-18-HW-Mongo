@@ -1,7 +1,7 @@
 
 	$.getJSON('/articles', function(data){
 		for(var i=0; i<data.length; i++){
-			$('#articles').append('<div class="card blue-grey lighten-4"> <span class="card-title condensed thin center" id="' + data[i].title + '">' + data[i].title +  '</span> <p class="condensed thin" data-id="' + data[i]._id + '">' + data[i].body + '</p> <div class="card-action"> <a href="' + data[i].link + '" class="left thin"> Read More </a>  <a id="addNote" data-id="' + data[i]._id + '"class="right thin"> Add Note </a></div></div>  <br>');
+			$('#articles').append('<div class="card indigo lighten-5"> <span class="card-title condensed thin center" id="' + data[i].title + '">' + data[i].title +  '</span> <p class="condensed thin" data-id="' + data[i]._id + '">' + data[i].body + '</p> <div class="card-action"> <a href="' + data[i].link + '" class="left thin text-black"> Read More </a>  <a id="addNote" data-id="' + data[i]._id + '"class="right thin text-black"> Add Note </a></div></div>  <br>');
 		}
 	});
 
