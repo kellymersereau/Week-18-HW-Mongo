@@ -1,7 +1,7 @@
 
 	$.getJSON('/articles', function(data){
 		for(var i=0; i<data.length; i++){
-			$('#articles').append('<h5 class="condensed thin center" id="' + data[i].title + '">' + data[i].title +  '</h5> <p class="condensed thin" data-id="' + data[i]._id + '">' + data[i].body + '</p> <a href="' + data[i].link + '" class="waves-effect waves-light btn center thin black lighten-1"> Read More </a>  <button id="addNote" data-id="' + data[i]._id + '"class="waves-effect waves-light btn right thin black lighten-1"> Add Note </button> <br>');
+			$('#articles').append('<div class="card large blue-grey lighten-4"> <span class="card-title condensed thin center" id="' + data[i].title + '">' + data[i].title +  '</span> <p class="condensed thin" data-id="' + data[i]._id + '">' + data[i].body + '</p> </div> <div class="card-action"> <a href="' + data[i].link + '" class="left thin"> Read More </a>  <a id="addNote" data-id="' + data[i]._id + '"class="right thin"> Add Note </a></div> <br>');
 		}
 	});
 
@@ -15,10 +15,13 @@
 	  })
 	    .done(function( data ) {
 	      console.log(data);
-	      $('#notes').append('<h5 class="center thin">' + data.title + '</h5>');
-	      $('#notes').append('<input id="titleinput" name="title" placeholder="Title">');
-	      $('#notes').append('<textarea id="bodyinput" name="body" placeholder="Add notes"></textarea>');
-	      $('#notes').append('<button data-id="' + data._id + '" id="savenote" class="waves-effect waves-light btn center thin indigo lighten-3">Save Note</button>');
+	      $('#notes').append('<div class="row">');
+	      $('#notes').append('<h5 class="center thin">' + data.title + '</h5></div>');
+	      $('#notes').append('<div class="row">');
+	      $('#notes').append('<div class="input-field col s12">');
+	      $('#notes').append('<textarea class="center thin" id="titleinput" name="title"> </textarea> <label for="titleinput" class="center"> Title </label></div>');
+	      $('#notes').append('<div class="row"> <textarea id="bodyinput" name="body"></textarea> <label for="bodyinput" class="center">Add Notes</label></div>');
+	      $('#notes').append('<div class="row"><button data-id="' + data._id + '" id="savenote" class="waves-effect waves-light btn center-align thin indigo lighten-3">Save Note</button></div>');
 
 	      if(data.note){
 	        $('#titleinput').val(data.note.title);
